@@ -1,0 +1,13 @@
+<div class="each-list">
+  <h5>{{title}}</h5>
+  <div class="list-wrapper">
+      <ng-container *ngFor="let y of list">
+          <div class="it" (click)="toggleCheck(y)">{{y.content}} &nbsp;&nbsp;&nbsp;&nbsp; 
+            <fa-icon [icon]="faTimes" *ngIf="!y.checked"></fa-icon> 
+            <fa-icon [icon]="faCheckSquare" *ngIf="y.checked"></fa-icon></div>
+        </ng-container>
+  </div>
+  <div (click) = "deleteList()" class="remove-list-btn">
+      <i class="fas fa-minus"></i>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+
+<ng-container *ngIf="list.length > 0">
+    <section class="list-section">
+        <h4>Your List</h4>
+      
+        <section class="all-list-section">
+          <ng-container *ngFor="let x of list">
+              <app-each-list (eachListEvent)="confirmDelete($event)" [title]="x.title" [list]="x.list"></app-each-list>
+          </ng-container>
+        </section>
+      
+      </section>
+ 
+</ng-container>
+
+<ng-container *ngIf="list.length === 0">
+  <section style="text-align: center">
+      <h6>You Currently Do Not Have A List</h6>
+  </section>
+</ng-container>
+
+     
+<div class="add-button" (click) = "_showAddList()">
+    <i class="fas fa-plus"></i>
+</div>   
+
+<ng-container *ngIf="showAddList">
+  <div class="overlay" (click)="_hideAll()">  
+  </div>
+
+  <div class="add-list-form">
+    <div class="input-field">
+      <input [(ngModel)]="currentTitle"  id="title" type="text" class="list-title">
+      <label for="title">Title</label>
+    </div>
+    <div class="input-field">
+        <input [(ngModel)]="currentContent" id="content" type="text" class="list-title">
+        <label for="content">Content</label>
+        <button (click)="pushContent()" class="btn waves-effect waves-light" type="submit" name="action">
+            <i class="fas fa-plus"></i>
+        </button>
+      </div>
+        <div class="current-temp-list" *ngIf="temp_list.length > 0">
+          <h3>Currently Added List</h3>
+          <div class="each-tlist-wrapper">
+              <ng-container *ngFor="let x of temp_list">
+                  <div class="each-temp-list">
+                      <div class="temp-content">
+                          {{x.content}}
+                        </div>
+                        <button (click)="removeContent(x.id)" class="btn waves-effect waves-light" >
+                            <i class="fas fa-minus"></i>
+                        </button>
+                  </div>    
+              </ng-container>
+          </div>
+          
+              
+          <button (click)="addTempList()" class="btn waves-effect waves-light" >
+            ADD LIST
+        </button>
+      </div>
+
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="showConfirmDelete">
+    <div class="overlay" (click)="_hideAll()">  
+    </div>
+    <div class="add-list-form">
+     <h3> Are you sure you wanna DELETE <b>{{currentTitleToBeDeleted}}?!</b> </h3>
+     <div class="c-btns">
+        <button (click)="deleteList(true)" class="btn waves-effect waves-light" >
+            YES
+        </button>
+        <button (click)="deleteList(false)" class="btn waves-effect waves-light" >
+            NO
+        </button>
+     </div>
+ 
+    </div>
+</ng-container>

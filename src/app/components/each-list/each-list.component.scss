@@ -1,0 +1,30 @@
+.each-list{
+    grid-column: auto;
+    border: 2px solid #7f0082;
+    padding: 16px;
+    border-radius: 12px;
+    height: 260px;
+    .list-wrapper{
+        height: 140px;
+        overflow-y: scroll;
+        .it{
+            cursor: pointer;
+        }
+    }
+    .remove-list-btn{
+        background: #7f0082;
+        height: 40px;
+        width: 40px;
+        border-radius: 12px;
+        color: #fff;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+    }
+
+    fa-icon{
+        color: #7f0082;
+        font-size: 18px;
+    }
+}
